@@ -78,8 +78,7 @@ export function Programs() {
       description:
         "Participation in FMSF Delhi&apos;s workshop on financial management and institutional accountability for non-profits.",
       location: "Bhopal, Madhya Pradesh",
-      image:
-        "https://images.unsplash.com/photo-1488121926898-5ac6f574d96b?w=600&h=400&fit=crop",
+      image: "/capacity.png",
     },
   ];
 
@@ -91,15 +90,6 @@ export function Programs() {
   return (
     <section className="programs" id="programs">
       <div className="wrap">
-        <div className="section-head reveal">
-          <div className="eyebrow">Programs &amp; initiatives</div>
-          <h2>What this looks like on the ground.</h2>
-          <p>
-            A running log of orientation drives, workshops, and community events
-            across our intervention areas.
-          </p>
-        </div>
-
         <div className="filter-row reveal">
           <button
             className={`filter-btn ${activeFilter === "all" ? "active" : ""}`}

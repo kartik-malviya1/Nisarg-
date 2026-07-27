@@ -1,34 +1,41 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useCountAnimation } from '@/hooks/useScrollReveal'
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useCountAnimation } from "@/hooks/useScrollReveal";
 
 const carouselImages = [
-  '/photo1.png',
-  '/photo2.png',
-  '/photo3.png',
-  '/photo4.png',
-  '/photo5.png',
-]
+  "/farmer-orientation.png",
+  "/photo6.png",
+  "/photo7.png",
+  "/photo8.png",
+  "/photo9.png",
+  "/photo10.png",
+  "/photo11.png",
+  "/photo2.png",
+  "/photo3.png",
+  "/photo4.png",
+  "/waterday.png",
+  "/women1.png",
+];
 
 export function Hero() {
-  useCountAnimation()
-  const [currentIndex, setCurrentIndex] = useState(0)
+  useCountAnimation();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length)
-    }, 5000)
-    return () => clearInterval(timer)
-  }, [])
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <header className="hero" id="top">
       {carouselImages.map((src, index) => (
         <div
           key={src}
-          className={`hero-bg-slide ${index === currentIndex ? 'active' : ''}`}
+          className={`hero-bg-slide ${index === currentIndex ? "active" : ""}`}
           style={{ backgroundImage: `url('${src}')` }}
         />
       ))}
@@ -41,8 +48,9 @@ export function Hero() {
           Regenerative farming for <em>resilient</em> rural communities.
         </h1>
         <p className="hero-sub">
-          We help farmers restore soil health, reduce input costs, and build climate-resilient 
-          livelihoods through sustainable and regenerative agriculture practices.
+          We help farmers restore soil health, reduce input costs, and build
+          climate-resilient livelihoods through sustainable and regenerative
+          agriculture practices.
         </p>
         <div className="hero-ctas">
           <Link href="/impact" className="btn btn-primary">
@@ -58,7 +66,7 @@ export function Hero() {
           {carouselImages.map((_, index) => (
             <button
               key={index}
-              className={`hero-dot ${index === currentIndex ? 'active' : ''}`}
+              className={`hero-dot ${index === currentIndex ? "active" : ""}`}
               onClick={() => setCurrentIndex(index)}
               aria-label={`Slide ${index + 1}`}
             />
@@ -86,13 +94,10 @@ export function Hero() {
             <span className="stat-num" data-lakh="10">
               0
             </span>
-            <div className="stat-label">
-              Farmer goal by 2031, India-wide
-            </div>
+            <div className="stat-label">Farmer goal by 2031, India-wide</div>
           </div>
         </div>
       </div>
     </header>
-  )
+  );
 }
-

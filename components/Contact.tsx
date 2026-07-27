@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function Contact() {
-  useScrollReveal()
+  useScrollReveal();
   return (
     <section className="contact" id="contact">
       <div className="wrap">
@@ -25,17 +25,23 @@ export function Contact() {
               </div>
               <div>
                 <dt>Phone</dt>
-                <dd><a href="tel:+919993966218">+91 99939 66218</a></dd>
+                <dd>
+                  <a href="tel:+917987300623">+91 7987300623</a>
+                </dd>
               </div>
               <div>
                 <dt>Email</dt>
-                <dd><a href="mailto:info@nisargfoundation.org">info@nisargfoundation.org</a></dd>
+                <dd>
+                  <a href="mailto:info@nisargfoundation.org">
+                    info@nisargfoundation.org
+                  </a>
+                </dd>
               </div>
             </dl>
             <div className="map-frame">
               <iframe
                 loading="lazy"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=76.95%2C23.10%2C77.22%2C23.30&amp;layer=mapnik&amp;marker=23.2032%2C77.0844"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29335.539114743846!2d77.06738452967159!3d23.208770058767595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397cf36a4bac0fb9%3A0xce6c687b989469e1!2sSehore%2C%20Madhya%20Pradesh%20466001!5e0!3m2!1sen!2sin!4v1785151343822!5m2!1sen!2sin"
                 title="Map of Sehore, Madhya Pradesh"
               />
             </div>
@@ -43,25 +49,14 @@ export function Contact() {
 
           <form className="form-grid reveal" onSubmit={() => false}>
             <div className="form-row">
-              <input
-                type="text"
-                placeholder="Full name"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email address"
-                required
-              />
+              <input type="text" placeholder="Full name" required />
+              <input type="email" placeholder="Email address" required />
             </div>
-            <input
-              type="text"
-              placeholder="Subject"
-            />
+            <input type="text" placeholder="Subject" />
             <textarea placeholder="Your message" />
             <button
               className="btn btn-dark"
-              style={{ width: 'fit-content' }}
+              style={{ width: "fit-content" }}
               type="submit"
             >
               Send message
@@ -74,5 +69,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
