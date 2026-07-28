@@ -217,7 +217,7 @@ export function Contact() {
                       onChange={(e) =>
                         setForm({ ...form, name: e.target.value })
                       }
-                      className="w-full bg-gray-50/80 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
+                      className="w-full bg-gray-50 border border-gray-300 text-gray-900 font-medium placeholder:text-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -231,7 +231,7 @@ export function Contact() {
                       onChange={(e) =>
                         setForm({ ...form, email: e.target.value })
                       }
-                      className="w-full bg-gray-50/80 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
+                      className="w-full bg-gray-50 border border-gray-300 text-gray-900 font-medium placeholder:text-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
                     />
                   </div>
                 </div>
@@ -249,7 +249,7 @@ export function Contact() {
                       onChange={(e) =>
                         setForm({ ...form, phone: e.target.value })
                       }
-                      className="w-full bg-gray-50/80 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
+                      className="w-full bg-gray-50 border border-gray-300 text-gray-900 font-medium placeholder:text-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -261,11 +261,11 @@ export function Contact() {
                       onChange={(e) =>
                         setForm({ ...form, subject: e.target.value })
                       }
-                      className="w-full bg-gray-50/80 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all text-gray-700"
+                      className="w-full bg-gray-50 border border-gray-300 text-gray-900 font-semibold rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
                     >
-                      <option value="">Select a topic (optional)…</option>
+                      <option value="" className="text-gray-500">Select a topic (optional)…</option>
                       {subjects.map((sub) => (
-                        <option key={sub} value={sub}>
+                        <option key={sub} value={sub} className="text-gray-900 bg-white">
                           {sub}
                         </option>
                       ))}
@@ -285,21 +285,21 @@ export function Contact() {
                     onChange={(e) =>
                       setForm({ ...form, message: e.target.value })
                     }
-                    className="w-full bg-gray-50/80 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all resize-none"
+                    className="w-full bg-gray-50 border border-gray-300 text-gray-900 font-medium placeholder:text-gray-400 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer"
+                  className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer text-base"
                 >
                   {loading ? (
-                    "Sending Message..."
+                    <span className="text-white font-bold">Sending Message...</span>
                   ) : (
                     <>
-                      <span>Send Message</span>
-                      <Send className="w-4 h-4" />
+                      <span className="text-white font-bold">Send Message</span>
+                      <Send className="w-4 h-4 text-white" />
                     </>
                   )}
                 </button>

@@ -378,7 +378,7 @@ export default function AdminContactPage() {
                   )}
                   <button
                     onClick={() => setViewingContact(null)}
-                    className="px-5 py-2.5 bg-gradient-to-r from-slate-800 to-slate-900 text-white text-xs font-bold rounded-xl shadow-lg transition-all cursor-pointer"
+                    className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl shadow-md transition-all cursor-pointer"
                   >
                     Close
                   </button>

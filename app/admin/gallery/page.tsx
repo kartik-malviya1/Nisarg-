@@ -78,8 +78,10 @@ export default function AdminGalleryPage() {
       selectedCategory === "All" || img.category === selectedCategory;
     const matchesQuery =
       !searchQuery ||
-      (img.title && img.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (img.category && img.category.toLowerCase().includes(searchQuery.toLowerCase()));
+      (img.title &&
+        img.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (img.category &&
+        img.category.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesQuery;
   });
 
@@ -234,15 +236,15 @@ export default function AdminGalleryPage() {
 
         <button
           onClick={() => setIsUploadOpen(true)}
-          className="group bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold rounded-xl text-xs px-5 py-3 flex items-center gap-2 shadow-lg shadow-emerald-500/20 hover:shadow-xl hover:shadow-emerald-500/30 transition-all cursor-pointer w-full sm:w-auto justify-center"
+          className="group bg-[#2c5234] hover:bg-[#1f3b25] text-black font-bold rounded-xl text-xs px-5 py-3 flex items-center gap-2 shadow-md shadow-emerald-900/20 hover:shadow-lg transition-all cursor-pointer w-full sm:w-auto justify-center"
         >
-          <PlusCircle className="h-4 w-4 group-hover:rotate-90 transition-transform duration-300" />
-          <span>Upload Image</span>
+          <PlusCircle className="h-4 w-4 group-hover:rotate-90 transition-transform duration-300 text-black" />
+          <span className="text-black font-bold">Upload Image</span>
         </button>
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
+      <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -250,7 +252,7 @@ export default function AdminGalleryPage() {
             placeholder="Search by caption or category..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 h-11 w-full border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all bg-slate-50 focus:bg-white"
+            className="pl-10 h-11 w-full border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all bg-slate-50 focus:bg-white text-slate-900 font-medium"
           />
         </div>
 
@@ -261,10 +263,10 @@ export default function AdminGalleryPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`text-xs font-bold px-3.5 py-2.5 rounded-xl transition-all whitespace-nowrap cursor-pointer ${
+                className={`text-xs font-bold px-4 py-2.5 rounded-xl transition-all whitespace-nowrap cursor-pointer ${
                   isSelected
-                    ? "bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-md shadow-emerald-500/20"
-                    : "bg-slate-50 text-slate-500 hover:bg-slate-100 hover:text-slate-700 border border-transparent hover:border-slate-200"
+                    ? "bg-[#2c5234] text-black shadow-md border border-[#1f3b25]"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 border border-slate-200 font-semibold"
                 }`}
               >
                 {cat}
@@ -303,9 +305,10 @@ export default function AdminGalleryPage() {
           </p>
           <button
             onClick={() => setIsUploadOpen(true)}
-            className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-xs font-bold rounded-xl shadow-lg shadow-emerald-500/20 cursor-pointer"
+            className="px-6 py-3 bg-[#2c5234] hover:bg-[#1f3b25] text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-900/20 hover:shadow-lg transition-all cursor-pointer inline-flex items-center gap-2"
           >
-            Upload Photo
+            <PlusCircle className="w-4 h-4 text-white" />
+            <span className="text-white font-bold">Upload Photo</span>
           </button>
         </div>
       ) : (
@@ -350,7 +353,7 @@ export default function AdminGalleryPage() {
                 {/* Category Badge */}
                 <span
                   className={`absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg border backdrop-blur-md ${getCategoryColor(
-                    img.category || "General"
+                    img.category || "General",
                   )}`}
                 >
                   {img.category || "General"}
@@ -510,17 +513,17 @@ export default function AdminGalleryPage() {
                 <button
                   type="submit"
                   disabled={isUploading}
-                  className="px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-xs font-bold rounded-xl shadow-lg shadow-emerald-500/20 hover:shadow-xl transition-all flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                  className="px-6 py-2.5 bg-[#2c5234] hover:bg-[#1f3b25] text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-900/20 hover:shadow-lg transition-all flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
                 >
                   {isUploading ? (
                     <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Uploading...</span>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
+                      <span className="text-white font-bold">Uploading...</span>
                     </>
                   ) : (
                     <>
-                      <Upload className="w-3.5 h-3.5" />
-                      <span>Upload Image</span>
+                      <Upload className="w-3.5 h-3.5 text-white" />
+                      <span className="text-white font-bold">Upload Image</span>
                     </>
                   )}
                 </button>
@@ -566,7 +569,7 @@ export default function AdminGalleryPage() {
                   type="text"
                   value={editTitle}
                   onChange={(e) => setEditTitle(e.target.value)}
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-slate-50 focus:bg-white transition-all"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-slate-50 focus:bg-white text-slate-900 font-medium transition-all"
                 />
               </div>
 
@@ -577,7 +580,7 @@ export default function AdminGalleryPage() {
                 <select
                   value={editCategory}
                   onChange={(e) => setEditCategory(e.target.value)}
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-slate-50 focus:bg-white text-slate-800 transition-all"
+                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-slate-50 focus:bg-white text-slate-900 font-semibold transition-all"
                 >
                   {CATEGORIES.filter((c) => c !== "All").map((cat) => (
                     <option key={cat} value={cat}>
@@ -598,15 +601,15 @@ export default function AdminGalleryPage() {
                 <button
                   type="submit"
                   disabled={isUpdating}
-                  className="px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-green-600 text-white text-xs font-bold rounded-xl shadow-lg shadow-emerald-500/20 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
+                  className="px-6 py-2.5 bg-[#2c5234] hover:bg-[#1f3b25] text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-900/20 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-60"
                 >
                   {isUpdating ? (
                     <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                      <span>Saving...</span>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
+                      <span className="text-black font-bold">Saving...</span>
                     </>
                   ) : (
-                    <span>Save Changes</span>
+                    <span className="text-black font-bold">Save Changes</span>
                   )}
                 </button>
               </div>

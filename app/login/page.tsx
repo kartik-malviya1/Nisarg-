@@ -3,7 +3,15 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { ShieldCheck, Loader2, Eye, EyeOff, Leaf, Lock, Mail } from "lucide-react";
+import {
+  ShieldCheck,
+  Loader2,
+  Eye,
+  EyeOff,
+  Leaf,
+  Lock,
+  Mail,
+} from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -144,7 +152,7 @@ export default function LoginPage() {
               <input
                 id="login-email"
                 type="email"
-                placeholder="admin@nisarg.org"
+                placeholder="your@mail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isLoading}
@@ -156,8 +164,7 @@ export default function LoginPage() {
                 }}
                 onFocus={(e) => {
                   e.target.style.borderColor = "rgba(34, 197, 94, 0.5)";
-                  e.target.style.boxShadow =
-                    "0 0 0 3px rgba(34, 197, 94, 0.1)";
+                  e.target.style.boxShadow = "0 0 0 3px rgba(34, 197, 94, 0.1)";
                   e.target.style.background = "rgba(255,255,255,0.08)";
                 }}
                 onBlur={(e) => {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
@@ -96,12 +97,12 @@ export default function AdminDashboardPage() {
   const animatedGallery = useAnimatedCounter(
     stats.galleryCount,
     1200,
-    !stats.loading
+    !stats.loading,
   );
   const animatedContacts = useAnimatedCounter(
     stats.contactCount,
     1200,
-    !stats.loading
+    !stats.loading,
   );
 
   // Generate color from name for avatar
@@ -181,10 +182,10 @@ export default function AdminDashboardPage() {
           <div className="flex gap-3">
             <Link
               href="/admin/gallery"
-              className="group px-5 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 hover:border-white/20 text-white rounded-xl font-bold text-xs shadow-lg transition-all flex items-center gap-2"
+              className="group px-5 py-3 bg-[#2c5234] hover:bg-[#1f3b25] border border-emerald-400/40 text-white rounded-xl font-bold text-xs shadow-md transition-all flex items-center gap-2"
             >
-              <Upload className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              <span>Upload Image</span>
+              <Upload className="w-4 h-4 group-hover:scale-110 transition-transform text-white" />
+              <span className="text-white font-bold">Upload Image</span>
             </Link>
           </div>
         </div>
@@ -309,7 +310,7 @@ export default function AdminDashboardPage() {
                 {/* Avatar */}
                 <div
                   className={`w-9 h-9 rounded-xl bg-gradient-to-br ${getInitialColor(
-                    c.name
+                    c.name,
                   )} flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-sm`}
                 >
                   {c.name

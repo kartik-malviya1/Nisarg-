@@ -103,7 +103,8 @@ export function AdminSidebarClient({
           ${collapsed ? "w-[76px]" : "w-[264px]"}
         `}
         style={{
-          background: "linear-gradient(180deg, #0a1f12 0%, #122a1a 40%, #0f2418 100%)",
+          background:
+            "linear-gradient(180deg, #0a1f12 0%, #122a1a 40%, #0f2418 100%)",
         }}
       >
         {/* Decorative gradient overlay */}
@@ -119,7 +120,9 @@ export function AdminSidebarClient({
         <div className="absolute top-0 right-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/20 via-emerald-400/10 to-transparent" />
 
         {/* Logo Area */}
-        <div className={`relative z-10 flex items-center gap-3 px-5 h-[72px] shrink-0 border-b border-white/[0.06] ${collapsed ? "justify-center px-0" : ""}`}>
+        <div
+          className={`relative z-10 flex items-center gap-3 px-5 h-[72px] shrink-0 border-b border-white/[0.06] ${collapsed ? "justify-center px-0" : ""}`}
+        >
           <div className="relative">
             <div className="absolute -inset-1 rounded-xl bg-emerald-500/20 blur-md animate-pulse" />
             <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-900/40">
@@ -139,10 +142,10 @@ export function AdminSidebarClient({
         </div>
 
         {/* Navigation */}
-        <nav className="relative z-10 flex-1 overflow-y-auto py-4 px-3 space-y-1">
+        <nav className="relative z-10 flex-1 overflow-y-auto py-4 px-3 space-y-1.5">
           {!collapsed && (
             <div className="px-3 mb-3">
-              <span className="text-[10px] font-bold text-emerald-500/50 uppercase tracking-[0.15em]">
+              <span className="text-[11px] font-extrabold text-emerald-400 uppercase tracking-[0.15em]">
                 Management
               </span>
             </div>
@@ -162,15 +165,15 @@ export function AdminSidebarClient({
                   ${collapsed ? "justify-center px-0 py-3 mx-auto w-12 h-12" : "px-3.5 py-2.5"}
                   ${
                     isActive
-                      ? "bg-emerald-500/15 text-emerald-300"
-                      : "text-white/50 hover:text-white/90 hover:bg-white/[0.04]"
+                      ? "bg-emerald-500/25 border border-emerald-400/30 text-white shadow-md"
+                      : "text-emerald-100/90 hover:text-white hover:bg-white/[0.08]"
                   }
                 `}
               >
                 {/* Active indicator bar */}
                 {isActive && (
                   <div
-                    className={`absolute left-0 bg-gradient-to-b from-emerald-400 to-emerald-600 rounded-full shadow-lg shadow-emerald-500/30
+                    className={`absolute left-0 bg-emerald-400 rounded-full shadow-md shadow-emerald-400/50
                       ${collapsed ? "top-1/2 -translate-y-1/2 -left-1 w-[3px] h-5" : "top-1/2 -translate-y-1/2 -left-0.5 w-[3px] h-6"}`}
                     style={{
                       transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
@@ -181,21 +184,25 @@ export function AdminSidebarClient({
                 <item.icon
                   className={`shrink-0 transition-transform duration-200 group-hover:scale-110
                     ${collapsed ? "w-5 h-5" : "w-[18px] h-[18px]"}
-                    ${isActive ? "text-emerald-400" : ""}`}
+                    ${isActive ? "text-emerald-400" : "text-emerald-300/80 group-hover:text-emerald-300"}`}
                 />
 
                 {!collapsed && (
                   <>
                     <div className="flex-1 min-w-0">
-                      <span className={`text-[13px] font-semibold block leading-tight ${isActive ? "text-emerald-200 font-bold" : ""}`}>
+                      <span
+                        className={`text-[13px] block leading-tight ${isActive ? "text-white font-bold" : "text-emerald-50 font-semibold group-hover:text-white"}`}
+                      >
                         {item.name}
                       </span>
-                      <span className="text-[10px] text-white/30 block mt-0.5">
+                      <span
+                        className={`text-[10px] block mt-0.5 ${isActive ? "text-emerald-200 font-medium" : "text-emerald-300/70 group-hover:text-emerald-200"}`}
+                      >
                         {item.description}
                       </span>
                     </div>
                     {isActive && (
-                      <ChevronRight className="w-3.5 h-3.5 text-emerald-500/60" />
+                      <ChevronRight className="w-3.5 h-3.5 text-emerald-400" />
                     )}
                   </>
                 )}
@@ -205,17 +212,17 @@ export function AdminSidebarClient({
         </nav>
 
         {/* Sidebar Footer — User + Collapse Toggle */}
-        <div className="relative z-10 border-t border-white/[0.06] p-3 space-y-2">
+        <div className="relative z-10 border-t border-white/[0.1] p-3 space-y-2">
           {/* Collapse toggle */}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-white/40 hover:text-white/70 hover:bg-white/[0.04] rounded-xl transition-all text-xs font-medium cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 text-emerald-200/90 hover:text-white hover:bg-white/[0.08] rounded-xl transition-all text-xs font-semibold cursor-pointer"
           >
             {collapsed ? (
-              <PanelLeft className="w-4 h-4" />
+              <PanelLeft className="w-4 h-4 text-emerald-300" />
             ) : (
               <>
-                <PanelLeftClose className="w-4 h-4" />
+                <PanelLeftClose className="w-4 h-4 text-emerald-300" />
                 <span>Collapse</span>
               </>
             )}
@@ -223,22 +230,22 @@ export function AdminSidebarClient({
 
           {/* User card */}
           {!collapsed ? (
-            <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06]">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500/30 to-emerald-700/30 border border-emerald-500/20 flex items-center justify-center text-emerald-300 text-xs font-bold">
+            <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/[0.06] border border-white/[0.1]">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center text-emerald-200 text-xs font-bold shadow-sm">
                 {initials}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs font-semibold text-white/80 truncate">
+                <p className="text-xs font-bold text-white truncate">
                   {user?.name || user?.email}
                 </p>
-                <p className="text-[10px] text-emerald-500/60 font-medium">
+                <p className="text-[10px] text-emerald-400 font-bold">
                   Administrator
                 </p>
               </div>
             </div>
           ) : (
             <div className="flex justify-center">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-500/30 to-emerald-700/30 border border-emerald-500/20 flex items-center justify-center text-emerald-300 text-[10px] font-bold">
+              <div className="w-9 h-9 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center text-emerald-200 text-[10px] font-bold shadow-sm">
                 {initials}
               </div>
             </div>
@@ -263,7 +270,8 @@ export function AdminSidebarClient({
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
         style={{
-          background: "linear-gradient(180deg, #0a1f12 0%, #122a1a 40%, #0f2418 100%)",
+          background:
+            "linear-gradient(180deg, #0a1f12 0%, #122a1a 40%, #0f2418 100%)",
         }}
       >
         <div
@@ -321,14 +329,22 @@ export function AdminSidebarClient({
                 {isActive && (
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-6 bg-gradient-to-b from-emerald-400 to-emerald-600 rounded-full" />
                 )}
-                <item.icon className={`w-[18px] h-[18px] shrink-0 ${isActive ? "text-emerald-400" : ""}`} />
+                <item.icon
+                  className={`w-[18px] h-[18px] shrink-0 ${isActive ? "text-emerald-400" : ""}`}
+                />
                 <div className="flex-1 min-w-0">
-                  <span className={`text-[13px] font-semibold block ${isActive ? "text-emerald-200" : ""}`}>
+                  <span
+                    className={`text-[13px] font-semibold block ${isActive ? "text-emerald-200" : ""}`}
+                  >
                     {item.name}
                   </span>
-                  <span className="text-[10px] text-white/30">{item.description}</span>
+                  <span className="text-[10px] text-white/30">
+                    {item.description}
+                  </span>
                 </div>
-                {isActive && <ChevronRight className="w-3.5 h-3.5 text-emerald-500/60" />}
+                {isActive && (
+                  <ChevronRight className="w-3.5 h-3.5 text-emerald-500/60" />
+                )}
               </Link>
             );
           })}
@@ -441,9 +457,7 @@ export function AdminSidebarClient({
 
         {/* Page Content */}
         <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-          <div className="max-w-[1400px] mx-auto">
-            {children}
-          </div>
+          <div className="max-w-[1400px] mx-auto">{children}</div>
         </main>
 
         {/* Footer */}
