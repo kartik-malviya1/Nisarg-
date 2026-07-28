@@ -1,35 +1,25 @@
-'use client'
+"use client";
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
-import { Mail, ExternalLink } from 'lucide-react'
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Mail, ExternalLink } from "lucide-react";
 
 export function Partners() {
-  useScrollReveal()
+  useScrollReveal();
 
   const partners = [
     {
-      id: 1,
-      name: 'Solidaridad',
-      role: 'Agriculture & Trade Partner',
-      logo: '/Solidaridad logo.png',
-      website: 'https://solidaridad.in/',
-      email: 'info@solidaridad.in',
-      color: '#ffcc00',
-      textColor: '#1a1a1a',
-      description: 'Solidaridad is a global network organization working on sustainable, climate-resilient agriculture and fair trade practices to empower smallholder farming communities across India.',
-    },
-    {
       id: 2,
-      name: 'tanX Innovations',
-      role: 'Technology & Training Partner',
-      logo: '/Tanx logo.webp',
-      website: 'https://www.tanxinnovations.com/',
-      email: 'tanxinnovations@gmail.com',
-      color: '#eb5823',
-      textColor: '#ffffff',
-      description: 'tanX Innovations empowers rural communities with advanced digital literacy, technical training, and modern technical solutions for sustainable livelihood growth.',
+      name: "tanX Innovations",
+      role: "Technology & Training Partner",
+      logo: "/Tanx logo.webp",
+      website: "https://www.tanxinnovations.com/",
+      email: "tanxinnovations@gmail.com",
+      color: "#eb5823",
+      textColor: "#ffffff",
+      description:
+        "tanX Innovations empowers rural communities with advanced digital literacy, technical training, and modern technical solutions for sustainable livelihood growth.",
     },
-  ]
+  ];
 
   return (
     <section className="partners" id="partners">
@@ -38,8 +28,9 @@ export function Partners() {
           <div className="eyebrow">Partners</div>
           <h2>Working together for scale.</h2>
           <p>
-            NISARG collaborates with like-minded organizations, research institutions,
-            and platforms to strengthen our programmes and expand our reach.
+            NISARG collaborates with like-minded organizations, research
+            institutions, and platforms to strengthen our programmes and expand
+            our reach.
           </p>
         </div>
 
@@ -48,10 +39,12 @@ export function Partners() {
             <div
               key={partner.id}
               className="partner-card reveal"
-              style={{
-                '--brand-color': partner.color,
-                '--brand-text': partner.textColor,
-              } as React.CSSProperties}
+              style={
+                {
+                  "--brand-color": partner.color,
+                  "--brand-text": partner.textColor,
+                } as React.CSSProperties
+              }
             >
               <div className="partner-card-header">
                 <div className="partner-logo-container">
@@ -92,6 +85,5 @@ export function Partners() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

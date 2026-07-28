@@ -1,10 +1,8 @@
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import FloatingSocials from "@/components/FloatingSocial";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -49,10 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body>
-        <FloatingSocials />
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <LayoutWrapper>{children}</LayoutWrapper>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>

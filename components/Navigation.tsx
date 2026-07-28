@@ -35,7 +35,6 @@ const navItems = [
       },
     ],
   },
-  { label: "Impact", href: "/impact" },
   {
     label: "Media",
     href: "/media",
