@@ -18,6 +18,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import UploadModal from "@/components/admin/gallery/UploadModal";
+
 const CATEGORIES = ["All", "Field Work", "Workshops", "Community", "General"];
 
 interface GalleryItem {
@@ -38,14 +40,6 @@ export default function AdminGalleryPage() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<GalleryItem | null>(null);
   const [deleteTargetId, setDeleteTargetId] = useState<string | null>(null);
-
-  // Form states for Upload
-  const [uploadFile, setUploadFile] = useState<File | null>(null);
-  const [uploadPreview, setUploadPreview] = useState<string | null>(null);
-  const [uploadTitle, setUploadTitle] = useState("");
-  const [uploadCategory, setUploadCategory] = useState("Field Work");
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadError, setUploadError] = useState<string | null>(null);
 
   // Edit form states
   const [editTitle, setEditTitle] = useState("");
@@ -84,73 +78,6 @@ export default function AdminGalleryPage() {
         img.category.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesQuery;
   });
-
-  // Handle File Selection
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      setUploadFile(file);
-      setUploadPreview(URL.createObjectURL(file));
-      setUploadError(null);
-    }
-  };
-
-  // Upload Submission
-  const handleUploadSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!uploadFile) {
-      setUploadError("Please select an image file to upload.");
-      return;
-    }
-
-    try {
-      setIsUploading(true);
-      setUploadError(null);
-
-      // Step 1: Upload to Cloudinary via /api/upload
-      const formData = new FormData();
-      formData.append("file", uploadFile);
-
-      const uploadRes = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      const uploadData = await uploadRes.json();
-      if (!uploadRes.ok || !uploadData.url) {
-        throw new Error(uploadData.error || "Failed to upload image file.");
-      }
-
-      // Step 2: Save metadata to Prisma Gallery via POST /api/gallery
-      const saveRes = await fetch("/api/gallery", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: uploadTitle || "Untitled Image",
-          category: uploadCategory,
-          url: uploadData.url,
-        }),
-      });
-
-      const saveData = await saveRes.json();
-      if (!saveRes.ok) {
-        throw new Error(saveData.error || "Failed to save image record.");
-      }
-
-      // Reset & Refresh
-      setIsUploadOpen(false);
-      setUploadFile(null);
-      setUploadPreview(null);
-      setUploadTitle("");
-      setUploadCategory("Field Work");
-      fetchImages();
-    } catch (err: any) {
-      console.error("Upload error:", err);
-      setUploadError(err?.message || "Upload failed. Please try again.");
-    } finally {
-      setIsUploading(false);
-    }
-  };
 
   // Edit Submission
   const handleEditSubmit = async (e: React.FormEvent) => {
@@ -400,138 +327,12 @@ export default function AdminGalleryPage() {
       )}
 
       {/* ===== UPLOAD MODAL ===== */}
-      {isUploadOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
-          <div
-            className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className="flex justify-between items-center px-6 py-4 border-b border-slate-100 bg-slate-50/50">
-              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                  <Upload className="w-4 h-4 text-white" />
-                </div>
-                Upload New Image
-              </h3>
-              <button
-                onClick={() => setIsUploadOpen(false)}
-                className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <form onSubmit={handleUploadSubmit} className="p-6 space-y-5">
-              {uploadError && (
-                <div className="p-3.5 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl flex items-center gap-2.5 font-medium">
-                  <AlertCircle className="w-4 h-4 shrink-0" />
-                  <span>{uploadError}</span>
-                </div>
-              )}
-
-              {/* File Drop Area */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">
-                  Select Image File
-                </label>
-                <div className="group border-2 border-dashed border-slate-200 hover:border-emerald-400 rounded-2xl p-6 text-center bg-slate-50 hover:bg-emerald-50/30 relative cursor-pointer transition-all duration-200">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
-                  />
-                  {uploadPreview ? (
-                    <div className="relative aspect-[16/9] rounded-xl overflow-hidden max-h-48 mx-auto shadow-md">
-                      <img
-                        src={uploadPreview}
-                        alt="Preview"
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-2 right-2 bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1">
-                        <CheckCircle className="w-3 h-3" />
-                        Selected
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="space-y-2 py-4">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
-                        <Upload className="w-6 h-6" />
-                      </div>
-                      <p className="text-xs font-semibold text-slate-700">
-                        Click or drag & drop image here
-                      </p>
-                      <p className="text-[10px] text-slate-400">
-                        Supports PNG, JPG, WEBP (Uploaded to Cloudinary)
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Title */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">
-                  Image Title / Caption
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. Organic soil testing demonstration in Sehore"
-                  value={uploadTitle}
-                  onChange={(e) => setUploadTitle(e.target.value)}
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all bg-slate-50 focus:bg-white"
-                />
-              </div>
-
-              {/* Category */}
-              <div className="space-y-2">
-                <label className="text-xs font-bold text-slate-600 uppercase tracking-wider block">
-                  Category
-                </label>
-                <select
-                  value={uploadCategory}
-                  onChange={(e) => setUploadCategory(e.target.value)}
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-slate-50 focus:bg-white text-slate-800 transition-all"
-                >
-                  {CATEGORIES.filter((c) => c !== "All").map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="pt-2 flex justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsUploadOpen(false)}
-                  className="px-5 py-2.5 text-slate-600 text-xs font-bold hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={isUploading}
-                  className="px-6 py-2.5 bg-[#2c5234] hover:bg-[#1f3b25] text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-900/20 hover:shadow-lg transition-all flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
-                >
-                  {isUploading ? (
-                    <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin text-white" />
-                      <span className="text-white font-bold">Uploading...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Upload className="w-3.5 h-3.5 text-white" />
-                      <span className="text-white font-bold">Upload Image</span>
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
+      <UploadModal
+        isOpen={isUploadOpen}
+        onClose={() => setIsUploadOpen(false)}
+        onSuccess={fetchImages}
+        categories={CATEGORIES}
+      />
 
       {/* ===== EDIT MODAL ===== */}
       {editingItem && (
