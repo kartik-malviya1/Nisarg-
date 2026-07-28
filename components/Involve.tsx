@@ -1,21 +1,24 @@
-'use client'
+"use client";
 
-import { useScrollReveal } from '@/hooks/useScrollReveal'
-import { Heart, Users, Handshake } from 'lucide-react'
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Heart, Users, Handshake } from "lucide-react";
 
 export function Involve() {
-  useScrollReveal()
+  useScrollReveal();
   return (
-    <section className="involve py-16 md:py-24 bg-gradient-to-b from-emerald-50/40 to-white" id="involve">
+    <section
+      className="involve py-16 md:py-24 bg-gradient-to-b from-emerald-50/40 to-white"
+      id="involve"
+    >
       <div className="wrap max-w-7xl mx-auto px-4 md:px-6">
         <div className="reveal text-center max-w-3xl mx-auto mb-14">
           <span className="text-xs font-bold uppercase tracking-wider text-[#2c5234] bg-emerald-100/60 px-3 py-1 rounded-full">
             Opportunities
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-[#1a3322] mt-3 mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-100 mt-3 mb-4 tracking-tight">
             How you can get involved
           </h2>
-          <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+          <p className="text-gray-400 text-base md:text-lg leading-relaxed">
             Whether you&apos;re passionate about agriculture, women empowerment,
             or community development, there&apos;s a way for you to contribute.
           </p>
@@ -35,8 +38,8 @@ export function Involve() {
                 Fund a programme
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-8">
-                Support soil testing, farmer orientation or women&apos;s enterprise
-                work directly. 80G registered for tax benefits.
+                Support soil testing, farmer orientation or women&apos;s
+                enterprise work directly. 80G registered for tax benefits.
               </p>
             </div>
             <a
@@ -60,13 +63,13 @@ export function Involve() {
                 Give your time
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-8">
-                Field visits, training support, digital content, or documentation
-                — we work with volunteers across skill sets.
+                Field visits, training support, digital content, or
+                documentation — we work with volunteers across skill sets.
               </p>
             </div>
             <a
               href="#contact"
-              className="w-full bg-emerald-50 hover:bg-[#2c5234] text-[#2c5234] hover:text-white font-bold py-3.5 px-6 rounded-2xl border border-[#2c5234]/30 text-center transition-all text-sm block"
+              className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-3.5 px-6 rounded-2xl text-center shadow-md transition-all text-sm block"
             >
               Volunteer with us
             </a>
@@ -91,7 +94,7 @@ export function Involve() {
             </div>
             <a
               href="#contact"
-              className="w-full bg-emerald-50 hover:bg-[#2c5234] text-[#2c5234] hover:text-white font-bold py-3.5 px-6 rounded-2xl border border-[#2c5234]/30 text-center transition-all text-sm block"
+              className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-3.5 px-6 rounded-2xl text-center shadow-md transition-all text-sm block"
             >
               Start a conversation
             </a>
@@ -99,5 +102,5 @@ export function Involve() {
         </div>
       </div>
     </section>
-  )
+  );
 }

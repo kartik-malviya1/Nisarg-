@@ -113,7 +113,8 @@ export function Contact() {
             Let&apos;s talk and grow together.
           </h2>
           <p className="text-gray-600 text-base md:text-lg">
-            Have questions about our initiatives, want to partner with NISARG Foundation, or support rural communities? Reach out to us.
+            Have questions about our initiatives, want to partner with NISARG
+            Foundation, or support rural communities? Reach out to us.
           </p>
         </div>
 
@@ -162,7 +163,8 @@ export function Contact() {
               Send us a direct message
             </h3>
             <p className="text-sm text-gray-600 mb-8">
-              Fill out the details below and our team will get back to you within 24 hours.
+              Fill out the details below and our team will get back to you
+              within 24 hours.
             </p>
 
             {submitted ? (
@@ -172,7 +174,8 @@ export function Contact() {
                   Message Sent Successfully!
                 </h4>
                 <p className="text-sm text-gray-600 max-w-md leading-relaxed mb-6">
-                  Thank you for connecting with NISARG Foundation. We have received your inquiry and will reach back out to{" "}
+                  Thank you for connecting with NISARG Foundation. We have
+                  received your inquiry and will reach back out to{" "}
                   <span className="font-semibold text-gray-900">
                     {form.email || form.phone}
                   </span>{" "}
@@ -190,7 +193,7 @@ export function Contact() {
                       message: "",
                     });
                   }}
-                  className="px-6 py-2.5 rounded-xl bg-[#2c5234] text-white font-semibold text-sm hover:bg-[#1a3322] transition-colors shadow-md"
+                  className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-3.5 px-6 rounded-2xl text-center shadow-md transition-all text-sm block"
                 >
                   Send another message
                 </button>
@@ -263,9 +266,15 @@ export function Contact() {
                       }
                       className="w-full bg-gray-50 border border-gray-300 text-gray-900 font-semibold rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2c5234]/20 focus:border-[#2c5234] transition-all"
                     >
-                      <option value="" className="text-gray-500">Select a topic (optional)…</option>
+                      <option value="" className="text-gray-500">
+                        Select a topic (optional)…
+                      </option>
                       {subjects.map((sub) => (
-                        <option key={sub} value={sub} className="text-gray-900 bg-white">
+                        <option
+                          key={sub}
+                          value={sub}
+                          className="text-gray-900 bg-white"
+                        >
                           {sub}
                         </option>
                       ))}
@@ -295,10 +304,14 @@ export function Contact() {
                   className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/30 transition-all flex items-center justify-center gap-2 disabled:opacity-60 cursor-pointer text-base"
                 >
                   {loading ? (
-                    <span className="text-white font-bold">Sending Message...</span>
+                    <span className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-3.5 px-6 rounded-2xl text-center shadow-md transition-all text-sm block">
+                      Sending Message...
+                    </span>
                   ) : (
                     <>
-                      <span className="text-white font-bold">Send Message</span>
+                      <span className="w-full bg-[#2c5234] hover:bg-[#1a3322] text-white font-bold py-3.5 px-6 rounded-2xl text-center shadow-md transition-all text-sm block">
+                        Send Message
+                      </span>
                       <Send className="w-4 h-4 text-white" />
                     </>
                   )}
@@ -329,7 +342,9 @@ export function Contact() {
                 Visit NISARG Field Offices
               </h4>
               <p className="text-sm text-gray-700 leading-relaxed mb-4">
-                We welcome partners, researchers, and volunteers to visit our community demo plots and organic seed centers in Sehore district.
+                We welcome partners, researchers, and volunteers to visit our
+                community demo plots and organic seed centers in Sehore
+                district.
               </p>
               <div className="text-xs font-semibold text-[#2c5234] uppercase tracking-wider">
                 Madhya Pradesh, India
