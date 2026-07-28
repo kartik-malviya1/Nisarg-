@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-export function useScrollReveal(containerRef?: unknown) {
+export function useScrollReveal(deps: any[] = []) {
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal, .reveal-stagger')
 
@@ -15,15 +15,22 @@ export function useScrollReveal(containerRef?: unknown) {
           }
         })
       },
-      { threshold: 0.15 }
+      { threshold: 0.05 }
     )
 
-    revealEls.forEach((el) => io.observe(el))
+    revealEls.forEach((el) => {
+      const rect = el.getBoundingClientRect()
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('in')
+      } else {
+        io.observe(el)
+      }
+    })
 
     return () => {
       revealEls.forEach((el) => io.unobserve(el))
     }
-  }, [])
+  }, deps)
 }
 
 export function useCountAnimation() {

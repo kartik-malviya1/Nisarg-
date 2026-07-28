@@ -53,11 +53,12 @@ interface GalleryItem {
 }
 
 export function Gallery() {
-  useScrollReveal();
   const [activeCategory, setActiveCategory] = useState("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [dbImages, setDbImages] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
+
+  useScrollReveal([loading, activeCategory, dbImages.length]);
 
   useEffect(() => {
     async function fetchGallery() {

@@ -14,16 +14,18 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error("Invalid credentials");
+          return null;
         }
 
         try {
+          const email = credentials.email.trim().toLowerCase();
           const user = await prisma.user.findUnique({
-            where: { email: credentials.email },
+            where: { email },
           });
 
           if (!user) {
-            throw new Error("User not found");
+            console.error("Auth error: User not found -", credentials.email);
+            return null;
           }
 
           const isPasswordValid = await bcrypt.compare(
@@ -32,7 +34,8 @@ export const authOptions: NextAuthOptions = {
           );
 
           if (!isPasswordValid) {
-            throw new Error("Invalid password");
+            console.error("Auth error: Invalid password for -", credentials.email);
+            return null;
           }
 
           return {
@@ -42,7 +45,7 @@ export const authOptions: NextAuthOptions = {
           };
         } catch (error) {
           console.error("Auth error:", error);
-          throw new Error("Authentication failed");
+          return null;
         }
       },
     }),
@@ -68,7 +71,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "crfZwoPDNP7zdy6X8L+WqB8kOTbak2RbmyWnmgTTdCmQWj0Z7vWgrC45f3Y=",
 };
 
 export const auth = () => getServerSession(authOptions);
