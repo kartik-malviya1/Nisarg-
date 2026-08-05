@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react'
 
-export function useScrollReveal(deps: any[] = []) {
+export function useScrollReveal(deps: any = []) {
+  const dependencyArray = Array.isArray(deps) ? deps : [deps]
   useEffect(() => {
     const revealEls = document.querySelectorAll('.reveal, .reveal-stagger')
 
@@ -30,7 +31,7 @@ export function useScrollReveal(deps: any[] = []) {
     return () => {
       revealEls.forEach((el) => io.unobserve(el))
     }
-  }, deps)
+  }, dependencyArray)
 }
 
 export function useCountAnimation() {

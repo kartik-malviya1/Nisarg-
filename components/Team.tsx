@@ -70,7 +70,7 @@ export function Team() {
     },
   ];
 
-  useScrollReveal(containerRef);
+  useScrollReveal();
 
   return (
     <section className="team-section" ref={containerRef} id="team">

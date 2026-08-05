@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} data-scroll-behavior="smooth">
       <body>
         <LayoutWrapper>{children}</LayoutWrapper>
         {process.env.NODE_ENV === "production" && <Analytics />}

@@ -68,27 +68,27 @@ const projects = [
     image: "/soil-testing.png",
     color: "var(--leaf-700)",
   },
-  {
-    id: "4",
-    category: "agri",
-    tag: "TOT PROGRAMME",
-    title: "Training of Trainers — Regenerative Agriculture & FPO Development",
-    challenge:
-      "Scale required a network of field-level trainers who could independently replicate orientation programmes.",
-    solution:
-      "Three-day Master Trainer programme with tanX Innovations and Solidaridad, covering regenerative agriculture and FPO governance.",
-    activities: [
-      "3-day intensive training",
-      "30 participants trained",
-      "4 states represented",
-      "FPO management module",
-    ],
-    location: "30 Participants · 4 States · Bhopal",
-    outcomes:
-      "30 certified trainers now active across MP, Maharashtra, Rajasthan, and Gujarat",
-    image: "/TOT.png",
-    color: "var(--leaf-700)",
-  },
+  // {
+  //   id: "4",
+  //   category: "agri",
+  //   tag: "TOT PROGRAMME",
+  //   title: "Training of Trainers — Regenerative Agriculture & FPO Development",
+  //   challenge:
+  //     "Scale required a network of field-level trainers who could independently replicate orientation programmes.",
+  //   solution:
+  //     "Three-day Master Trainer programme with tanX Innovations and Solidaridad, covering regenerative agriculture and FPO governance.",
+  //   activities: [
+  //     "3-day intensive training",
+  //     "30 participants trained",
+  //     "4 states represented",
+  //     "FPO management module",
+  //   ],
+  //   location: "30 Participants · 4 States · Bhopal",
+  //   outcomes:
+  //     "30 certified trainers now active across MP, Maharashtra, Rajasthan, and Gujarat",
+  //   image: "/TOT.png",
+  //   color: "var(--leaf-700)",
+  // },
   {
     id: "5",
     category: "env",

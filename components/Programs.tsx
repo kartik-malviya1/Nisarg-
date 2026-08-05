@@ -49,17 +49,17 @@ export function Programs() {
       location: "45 soil samples · Sehore district",
       image: "/photo2.png",
     },
-    {
-      id: "4",
-      category: "agri",
-      tag: "TOT PROGRAMME",
-      title:
-        "Training of Trainers — Regenerative Agriculture & FPO Development",
-      description:
-        "A three-day Master Trainer programme with tanX Innovations and Solidaridad, building a network of resource persons.",
-      location: "30 participants · 4 states · Bhopal",
-      image: "/photo4.png",
-    },
+    // {
+    //   id: "4",
+    //   category: "agri",
+    //   tag: "TOT PROGRAMME",
+    //   title:
+    //     "Training of Trainers — Regenerative Agriculture & FPO Development",
+    //   description:
+    //     "A three-day Master Trainer programme with tanX Innovations and Solidaridad, building a network of resource persons.",
+    //   location: "30 participants · 4 states · Bhopal",
+    //   image: "/photo4.png",
+    // },
     {
       id: "5",
       category: "gov",
