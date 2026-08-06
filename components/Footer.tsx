@@ -151,11 +151,6 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="foot-bottom">
           <span>© 2026 NISARG Foundation. All rights reserved.</span>
-          <div className="foot-bottom-links">
-            <Link href="/resources">Privacy Policy</Link>
-            <Link href="/resources">Terms of Use</Link>
-            <Link href="/contact">Sitemap</Link>
-          </div>
         </div>
       </div>
     </footer>
