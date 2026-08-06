@@ -104,7 +104,6 @@ export function Footer() {
           {/* Col 5 — Get Involved*/}
           <div className="foot-col">
             <h5>Get Involved</h5>
-            <Link href="/get-involved">Donate</Link>
             <Link href="/get-involved">Volunteer</Link>
             <Link href="/get-involved">CSR Partnership</Link>
             <Link href="/get-involved">Internship</Link>
