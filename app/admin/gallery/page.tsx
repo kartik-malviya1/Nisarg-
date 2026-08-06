@@ -228,14 +228,14 @@ export default function AdminGalleryPage() {
           <p className="text-xs text-slate-500 max-w-sm mx-auto mt-2 mb-6 leading-relaxed">
             {searchQuery || selectedCategory !== "All"
               ? "No media images match your current filter criteria."
-              : "Your gallery is empty. Upload your first photo to Cloudinary."}
+              : "Your gallery is empty."}
           </p>
           <button
             onClick={() => setIsUploadOpen(true)}
             className="px-6 py-3 bg-[#2c5234] hover:bg-[#1f3b25] text-white text-xs font-bold rounded-xl shadow-md shadow-emerald-900/20 hover:shadow-lg transition-all cursor-pointer inline-flex items-center gap-2"
           >
-            <PlusCircle className="w-4 h-4 text-white" />
-            <span className="text-white font-bold">Upload Photo</span>
+            <PlusCircle className="w-4 h-4 text-black" />
+            <span className="font-bold text-black">Upload Photo</span>
           </button>
         </div>
       ) : (

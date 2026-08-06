@@ -8,6 +8,7 @@ export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
+    seed: "tsx scripts/seed-admin.ts"
   },
   engine: "classic",
   datasource: {
