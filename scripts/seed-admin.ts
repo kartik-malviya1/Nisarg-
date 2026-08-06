@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   const email = "admin@nisarg.org";
-  const password = "admin123";
+  const password = "admin@123";
   const name = "Admin";
 
   // Check if user already exists
